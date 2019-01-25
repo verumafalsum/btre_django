@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cfapi.views import json_example_view, JsonCBV, JsonCBV2
+from cfapi.views import json_example_view, JsonCBV, JsonCBV2, SerializedListView
 
 urlpatterns = [
     # path('', include('pages.urls')),
     path('json/example', json_example_view),
     path('json/cbv', JsonCBV.as_view()),
     path('json/cbv2', JsonCBV2.as_view()),
+    path('json/serialized/list', SerializedListView.as_view()),
     path('admin/', admin.site.urls),
 ]

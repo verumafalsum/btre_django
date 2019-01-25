@@ -68,3 +68,4 @@ venv.bak/
 .dmypy.json
 dmypy.json
 .pyre/
+.vscode
