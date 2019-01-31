@@ -3,7 +3,6 @@
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
 /media
 *.py[cod]
 *$py.class
@@ -70,3 +69,7 @@ dmypy.json
 .pyre/
 .vscode
 /static
+.idea
+
+settings.ini
+db.sqlite3
