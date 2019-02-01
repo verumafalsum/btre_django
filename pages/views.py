@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from listings.models import Listing
+from realtors.models import Realtor
 
 
 def index(request):
@@ -14,5 +16,11 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
-def about(request):
-    return render(request, 'pages/about.html')
+class AboutView(TemplateView):
+    template_name = 'pages/about.html'
+
+    def get_context_data(self, **kwargs):
+        realtors = Realtor.objects.all()
+        return {
+            'realtors': realtors
+        }
