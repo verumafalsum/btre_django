@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Listing
+
+from listings.models import Listing
 
 
 class ListingAdmin(admin.ModelAdmin):
@@ -24,5 +25,6 @@ class ListingAdmin(admin.ModelAdmin):
         'price'
         )
     list_per_page = 25
+
 
 admin.site.register(Listing, ListingAdmin)
