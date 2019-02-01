@@ -68,7 +68,7 @@ venv.bak/
 dmypy.json
 .pyre/
 .vscode
-/static
+collected_static
 .idea
 
 settings.ini
