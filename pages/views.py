@@ -20,7 +20,10 @@ class AboutView(TemplateView):
     template_name = 'pages/about.html'
 
     def get_context_data(self, **kwargs):
-        realtors = Realtor.objects.all()
+        realtors = Realtor.objects.all().order_by('-hire_date')
+
+        mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
         return {
-            'realtors': realtors
+            'realtors': realtors,
+            'mvp_realtors': mvp_realtors
         }
