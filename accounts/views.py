@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.views import View
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from contacts.models import Contact
 
 class RegisterView(TemplateView):
     template_name = "accounts/register.html"
@@ -76,6 +77,14 @@ class LoginView(TemplateView):
 
 class DashboardView(TemplateView):
     template_name = "accounts/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=self.request.user.id)
+        context = {
+            'contacts': user_contacts
+        }
+        return context
+    
 
 
 class LogoutView(View):
