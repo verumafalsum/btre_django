@@ -78,6 +78,10 @@ class DashboardView(TemplateView):
     template_name = "accounts/dashboard.html"
 
 
-def logout(request):
-    return redirect('index')
+class LogoutView(View):
+    def post(self, request):
+        auth.logout(request)
+        messages.success(request, 'You are now logged out')
+        return redirect('index')
+
     
