@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views import View
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.auth.models import User
 
 class RegisterView(TemplateView):
@@ -62,8 +62,17 @@ class LoginView(TemplateView):
     template_name = "accounts/login.html"
 
     def post(self, request):
-        
-        return redirect('login')
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect('login')
 
 class DashboardView(TemplateView):
     template_name = "accounts/dashboard.html"
