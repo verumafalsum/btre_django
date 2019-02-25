@@ -3,7 +3,7 @@
 Site for real estate search and interaction with realtors.
 
 ## Running project
-Python 3.5 or higher and virtualenv is required.
+Python 3.5 or higher and virtualenv are required.
 Run the following commands to create virtual enviroment:
 ```bash
 python3 -m virtualenv venv
